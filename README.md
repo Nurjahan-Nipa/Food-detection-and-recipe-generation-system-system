@@ -5,9 +5,24 @@
 
 The system is designed and tested entirely in a virtual space, enabling team members to develop and evaluate the core functionalities without physical hardware. A simple web-based interface displays detection results and guides users through recipe steps. This prototype serves as a foundation for future deployment on edge devices, demostrating the feasibility of combining computer vision and machine learning in the domain of intelligent cooking assistant.
 
+## Dataset to be used
+### Food Image Detection
+Image to help train or test the object detection system (e.g, identifying tomatoes, onions, etc.):
+- [Food-101](https://www.kaggle.com/datasets/dansbecker/food-101/data)
+- [UECFOOD-256](https://www.kaggle.com/datasets/rkuo2000/uecfood256)
+- YOLOV8 (Optionally train our model ourselves as needed)
+
+### Cooking Activity & Steps Detection
+- [EPIC-KITCHENS Dataset](https://github.com/epic-kitchens)
+- [YouCook2](https://huggingface.co/datasets/morpheushoc/youcook2)
+
+### Recipe and Ingredient Matching.
+- [Kaggle's Recipe Ingredients Dataset](https://www.kaggle.com/datasets/kaggle/recipe-ingredients-dataset)
+- Create our own clean, curated dataset - small, understandable, and grouped by couisine
+
 ## 🧩 Key Features
 - Image-based ingredient and tool detection using YOLOv8
-- Rule-based recipe suggestion engine
+- AI-suggested recipes according to selected cuisine
 - Simulated video/image pipeline in place of physical sensors
 - Lightweight web UI for interaction and visualization
 - Modular architecture to allow team collaboration and extension
