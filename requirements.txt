@@ -3,3 +3,7 @@ inference
 supervision
 opencv-python-headless
 matplotlib
+
+
+# To run the app_ui.py need these requirements to be fulfilled
+# pip install -r requirements.txt
