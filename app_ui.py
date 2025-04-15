@@ -11,7 +11,8 @@ required_dirs = ["data", "data/sample", "data/uploads"]
 for directory in required_dirs:
     os.makedirs(directory, exist_ok=True)
 
-# change to OUR TRAINED MODEL
+# change to OUR TRAINED MODEL!!
+# I have used yolov8n-640 just for demo purpose!!
 model = get_model(model_id="yolov8n-640")
 
 # 🔍 Detection function
