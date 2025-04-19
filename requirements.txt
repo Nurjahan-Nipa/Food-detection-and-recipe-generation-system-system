@@ -3,7 +3,17 @@ inference
 supervision
 opencv-python-headless
 matplotlib
-
+ultralytics
+transformers
+requests
+torch
+accelerate
+bitsandbytes
+sentensepiece
+streamlit
+fuzzywuzzy
+python-Levenshtein
 
 # To run the app_ui.py need these requirements to be fulfilled
+# Note that to run some of these you would ned a GPU with >= 12GB VRAM to run Mistral smoothly, or try quantized versions of RAM-constrained
 # pip install -r requirements.txt
