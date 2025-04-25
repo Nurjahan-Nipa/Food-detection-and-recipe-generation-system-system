@@ -3,10 +3,10 @@ import shutil
 from PIL import Image
 
 # === Configuration ===
-raw_images_root = "/home/classes/ee7722/ee772210/Downloads/food-101/images/"  # path to original class folders (e.g. apple_pie/*.jpg)
-output_root = "datasets/food101_yolo"
-train_txt = "/home/classes/ee7722/ee772210/Downloads/food-101/meta/train.txt"
-val_txt = "/home/classes/ee7722/ee772210/Downloads/food-101/meta/test.txt"  # Food-101 calls it test.txt
+raw_images_root = "dataset/food-101/images"  
+output_root = "dataset/food101_yolo"
+train_txt = "dataset/food-101/meta/train.txt"
+val_txt = "dataset/food-101/meta/test.txt"  # Food-101 calls it test.txt
 
 # === Output directories ===
 image_train = os.path.join(output_root, "images", "train")
@@ -19,7 +19,7 @@ for d in [image_train, image_val, label_train, label_val]:
     os.makedirs(d, exist_ok=True)
 
 # === Load class names ===
-with open("/home/classes/ee7722/ee772210/Downloads/food-101/meta/classes.txt") as f:
+with open("dataset/food-101/meta/classes.txt") as f:
     class_names = [line.strip() for line in f]
 class_dict = {name: idx for idx, name in enumerate(class_names)}
 
@@ -37,23 +37,22 @@ def process_list(txt_file, image_dir, label_dir):
             dst_lbl_path = os.path.join(label_dir, f"{class_name}_{img_name.replace('.jpg', '.txt')}")
 
             if not os.path.exists(src_img_path):
-                print(f"Image missing: {src_img_path}")
+                print(f"⚠️ Image missing: {src_img_path}")
                 continue
 
             shutil.copy2(src_img_path, dst_img_path)
 
-            # Create a bounding box that spans most of the image (assume object-centered)
+            # Create a dummy bounding box that assumes object is centered
             try:
                 with Image.open(src_img_path) as img:
                     w, h = img.size
-                # YOLO format: <class> <x_center> <y_center> <width> <height> (normalized)
-                bbox = [class_id, 0.5, 0.5, 0.9, 0.9]
+                bbox = [class_id, 0.5, 0.5, 0.9, 0.9]  # YOLO format (normalized)
                 with open(dst_lbl_path, "w") as f_lbl:
                     f_lbl.write(" ".join([str(x) for x in bbox]) + "\n")
             except Exception as e:
-                print(f"Failed processing {src_img_path}: {e}")
+                print(f"❌ Failed processing {src_img_path}: {e}")
 
-# === Generate train and val splits with labels ===
+# === Run the script ===
 process_list(train_txt, image_train, label_train)
 process_list(val_txt, image_val, label_val)
 

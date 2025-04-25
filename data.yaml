@@ -1,10 +1,10 @@
 # data.yaml
 
-path: ../datasets/food101_yolo/ # path to dataset root folder
+#path: dataset/food101_yolo/ # path to dataset root folder
 
 # Dataset splits (relative to 'path')
-train: images/train             # Training images directory
-val: images/val                 # Validation images directory
+train: D:/LSU/Spring_25/CSC 7333/project/CookVision/dataset/food101_yolo/images/train             # Training images directory
+val: D:/LSU/Spring_25/CSC 7333/project/CookVision/dataset/food101_yolo/images/val                 # Validation images directory
 
 # Optional test set (used separately with split=test)
 # test: images/test             # Uncomment if you have a test folder

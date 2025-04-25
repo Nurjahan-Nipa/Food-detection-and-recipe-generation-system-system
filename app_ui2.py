@@ -1,4 +1,6 @@
 import streamlit as st
+#st.set_page_config(page_title="CookVision", layout="centered")  # ? MUST be first
+
 from PIL import Image
 import os
 import tempfile
